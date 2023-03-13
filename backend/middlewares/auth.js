@@ -5,19 +5,22 @@ const ErrorHandler = require("../utils/errorHandler");
 const catchAsyncErrors = require("./catchAsyncErrors");
 
 // Checks if user is authenticated or not
-exports.isAuthenticatedUser = catchAsyncErrors(async (req, res, next) => {
+exports.isAuthenticatedUser = catchAsyncErrors(
+    async (req, res, next) => { !
+        console.log("req.headers => ",req.headers)
 
-    const { token } = req.cookies
+        const { token } = req.headers
 
-    if (!token) {
-        return next(new ErrorHandler('Login first to access this resource.', 401))
+        if (!token) {
+            return next(new ErrorHandler('Login first to access this resource.', 401))
+        }
+
+        const decoded = jwt.verify(token, process.env.JWT_SECRET)
+        req.user = await User.findById(decoded.id);
+
+        next()
     }
-
-    const decoded = jwt.verify(token, process.env.JWT_SECRET)
-    req.user = await User.findById(decoded.id);
-
-    next()
-})
+)
 
 // Handling users roles
 exports.authorizeRoles = (...roles) => {
