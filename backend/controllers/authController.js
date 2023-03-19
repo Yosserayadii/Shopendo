@@ -7,7 +7,6 @@ const sendEmail = require('../utils/sendEmail');
 
 const crypto = require('crypto');
 const cloudinary = require('cloudinary');
-
 // Register a user   => /api/v1/register
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
 
@@ -33,10 +32,9 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
 
 })
 
-// Login User  =>  /a[i/v1/login
+// Login User  =>  /api/v1/login
 exports.loginUser = catchAsyncErrors(async (req, res, next) => {
     const { email, password } = req.body;
-    console.log("we are here")
 
     // Checks if email and password is entered by user
     if (!email || !password) {
@@ -75,7 +73,7 @@ exports.forgotPassword = catchAsyncErrors(async (req, res, next) => {
     await user.save({ validateBeforeSave: false });
 
     // Create reset password url
-    const resetUrl = `${process.env.FRONTEND_URL}/password/reset/${resetToken}`;
+    const resetUrl = `${req.protocol}://${req.get('host')}/password/reset/${resetToken}`;
 
     const message = `Your password reset token is as follow:\n\n${resetUrl}\n\nIf you have not requested this email, then ignore it.`
 
@@ -261,21 +259,24 @@ exports.updateUser = catchAsyncErrors(async (req, res, next) => {
     })
 })
 
-// Delete user   =>   /api/v1/admin/user/:id
+// Delete user => /api/v1/admin/user/:id
 exports.deleteUser = catchAsyncErrors(async (req, res, next) => {
-    const user = await User.findById(req.params.id);
-
+    const user = await User.findOne({ _id: req.params.id });
+  
     if (!user) {
-        return next(new ErrorHandler(`User does not found with id: ${req.params.id}`))
+      return next(new ErrorHandler(`User not found with id: ${req.params.id}`, 404));
     }
-
+  
     // Remove avatar from cloudinary
-    const image_id = user.avatar.public_id;
-    await cloudinary.v2.uploader.destroy(image_id);
-
-    await user.remove();
-
+    if (user.avatar && user.avatar.public_id) {
+      await cloudinary.v2.uploader.destroy(user.avatar.public_id);
+    }
+  
+    await User.deleteOne({ _id: req.params.id });
+  
     res.status(200).json({
-        success: true,
-    })
-}) 
+      success: true,
+      message: 'User is deleted.'
+    });
+  });
+  
