@@ -7,7 +7,7 @@ exports.processPayment = catchAsyncErrors(async (req, res, next) => {
 
     const paymentIntent = await stripe.paymentIntents.create({
         amount: req.body.amount,
-        currency: 'usd',
+        currency: 'TND',
 
         metadata: { integration_check: 'accept_a_payment' }
     });
