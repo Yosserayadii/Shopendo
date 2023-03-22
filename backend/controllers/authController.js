@@ -159,7 +159,7 @@ exports.updatePassword = catchAsyncErrors(async (req, res, next) => {
 
     sendToken(user, 200, res)
 
-})
+} )
 
 
 // Update user profile   =>   /api/v1/me/update
@@ -197,7 +197,7 @@ exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
     res.status(200).json({
         success: true
     })
-})
+} )
 
 
 // Logout user   =>   /api/v1/logout
