@@ -159,7 +159,7 @@ exports.updatePassword = catchAsyncErrors(async (req, res, next) => {
 
     sendToken(user, 200, res)
 
-} )
+})
 
 
 // Update user profile   =>   /api/v1/me/update
@@ -197,7 +197,7 @@ exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
     res.status(200).json({
         success: true
     })
-} )
+})
 
 
 // Logout user   =>   /api/v1/logout
@@ -279,4 +279,24 @@ exports.deleteUser = catchAsyncErrors(async (req, res, next) => {
       message: 'User is deleted.'
     });
   });
+  // Change User Password => /api/v1/admin/users/:id/password
+exports.changeUserPassword = catchAsyncErrors(async (req, res, next) => {
+  const { id } = req.params;
+  const { password } = req.body;
+
+  const user = await User.findById(id);
+
+  if (!user) {
+    return next(new ErrorHandler(`User with ID ${id} not found`, 404));
+  }
+
+  user.password = password;
+  await user.save();
+
+  res.status(200).json({
+    success: true,
+    message: 'User Password updated successfully',
+  });
+});
+
   
