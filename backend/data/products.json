@@ -1,0 +1,95 @@
+[
+    {
+        "name" : "SanDisk Ultra 128GB SDXC UHS-I Memory Card up to 80MB/s",
+        "price" : "45.89",
+        "description" : "Ultra-fast cards (2) to take better pictures and Full HD videos (1) with your compact to mid-range point-and-shoot cameras and camcorders. With SanDisk Ultra SDXC UHS-I cards you’ll benefit from faster downloads, high capacity, and better performance to capture and store 128GB (5) of high quality pictures and Full HD video (1). Take advantage of ultra-fast read speeds of up to 80MB/s (3) to save time moving photos and videos from the card to your computer. From a leader in flash memory storage, SanDisk Ultra SDXC UHS-I cards are compatible with SDHC and SDXC digital devices, and come with a 10-year limited warranty (6).",
+        "ratings" : 4.5,
+        "images" : [{
+            "public_id" : "avatars/fgxb5kj91q8djfwtmndg",
+            "url" : "https://res.cloudinary.com/shoppittt/image/upload/v1678707980/avatars/fgxb5kj91q8djfwtmndg.jpg"
+        }],
+        "category" : "Electronics",
+        "seller" : "Ebay",
+        "stock" : 50,
+        "numOfReviews" : 32,
+        "reviews": []
+    },{
+        "name": "Apple iPhone 13 Pro Max",
+        "price": 1299.99,
+        "description": "The Apple iPhone 13 Pro Max features a 6.7-inch Super Retina XDR display, A15 Bionic chip, Pro camera system with 12MP Ultra Wide, Wide, and Telephoto cameras, Night mode, Deep Fusion, ProRAW, 4K Dolby Vision HDR recording, and more.",
+        "ratings": 4.8,
+        "images": [{
+        "public_id": "products/smartphone-apple-iphone-13-pro-max-128-go-bleu_aw1wm5",
+        "url": "https://rs.cloudinary.com/shoppittt/image/upload/v1678920312/products/smartphone-apple-iphone-13-pro-max-128-go-bleu_aw1wm5.jpg"
+        }],
+        "category": "Electronics",
+        "seller": "Apple",
+        "stock": 20,
+        "numOfReviews": 10,
+        "reviews": []
+        },
+        
+        {
+        "name": "Samsung Galaxy Watch 4",
+        "price": 299.99,
+        "description": "The Samsung Galaxy Watch 4 features a 1.4-inch Super AMOLED display, Exynos W920 dual-core processor, 16GB storage, 5ATM + IP68 water resistance, heart rate and sleep tracking, and more.",
+        "ratings": 4.5,
+        "images": [{
+        "public_id": "products/t%C3%A9l%C3%A9chargement_lqv3ij",
+        "url": "https://res.cloudinary.com/shoppittt/image/upload/v1678920311/products/t%C3%A9l%C3%A9chargement_lqv3ij.jpg"
+        }],
+        "category": "Electronics",
+        "seller": "Samsung",
+        "stock": 30,
+        "numOfReviews": 8,
+        "reviews": []
+        },
+        
+        {
+        "name": "Bose QuietComfort 35 II Wireless Headphones",
+        "price": 299.99,
+        "description": "The Bose QuietComfort 35 II Wireless Headphones feature world-class noise cancellation, Bluetooth and NFC pairing with voice prompts, up to 20 hours of battery life, and Alexa and Google Assistant compatibility.",
+        "ratings": 4.7,
+        "images": [{
+        "public_id": "products/t%C3%A9l%C3%A9chargement_1_nppqcg",
+        "url": "https://res.cloudinary.com/shoppittt/image/upload/v1678920311/products/t%C3%A9l%C3%A9chargement_1_nppqcg.jpg"
+        }],
+        "category": "Electronics",
+        "seller": "Bose",
+        "stock": 40,
+        "numOfReviews": 15,
+        "reviews": []
+        },
+        {
+            "name": "Apple AirPods Pro",
+            "price": 249.99,
+            "description": "Experience the magic of AirPods with noise-cancelling technology and a customizable fit. With transparency mode, you can hear what's happening around you while still enjoying your music or phone call. The AirPods Pro are easy to set up with all your Apple devices, and the charging case provides up to 24 hours of battery life.",
+            "ratings": 4.9,
+            "images": [{
+              "public_id": "products/Apple-AirPods-Pro-2nd-gen-hero-220907_big.jpg.large_phehp0",
+              "url": "https://res.cloudinary.com/shoppittt/image/upload/v1678920315/products/Apple-AirPods-Pro-2nd-gen-hero-220907_big.jpg.large_phehp0.jpg"
+            }],
+            "category": "Electronics",
+            "seller": "Apple",
+            "stock": 20,
+            "numOfReviews": 50,
+            "reviews": []
+          },
+          {
+            "name": "Amazon Echo Dot (4th Gen)",
+            "price": 49.99,
+            "description": "The 4th generation Amazon Echo Dot is a smart speaker with Alexa that fits perfectly into any room. You can ask Alexa to play music, answer questions, control smart home devices, and more. With a new spherical design and improved sound quality, the Echo Dot is the perfect addition to your home.",
+            "ratings": 4.7,
+            "images": [{
+              "public_id": "products/t%C3%A9l%C3%A9chargement_2_zhbrxg",
+              "url": "https://res.cloudinary.com/shoppittt/image/upload/v1678920311/products/t%C3%A9l%C3%A9chargement_2_zhbrxg.jpg"
+            }],
+            "category": "Electronics",
+            "seller": "Amazon",
+            "stock": 30,
+            "numOfReviews": 25,
+            "reviews": []
+          }
+          
+          
+]
