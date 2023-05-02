@@ -17,6 +17,7 @@ const path = require('path')
 
 const errorMiddleware = require('./middlewares/errors')
 
+const Setting = require('./models/settings');
 // Setting up config file 
 if (process.env.NODE_ENV !== 'PRODUCTION') require('dotenv').config({ path: 'backend/config/config.env' })
 // dotenv.config({ path: 'backend/config/config.env' })
@@ -29,20 +30,25 @@ app.use(fileUpload());
 
 // Import all routes
 const products = require('./routes/product');
+const coupons = require('./routes/coupon');
 const auth = require('./routes/auth');
 const payment = require('./routes/payment');
 const order = require('./routes/order');
+const couponRoute = require('./routes/coupon');
+const settingRoutes = require('./routes/setting');
 const categories = require('./routes/categories');
-const coupons = require('./routes/coupon');
 const reports = require('./routes/report');
 
-app.use('/api/v1', reports)
-app.use('/api/v1', coupons)
-app.use('/api/v1', categories);
+
 app.use('/api/v1', products)
+app.use('/api/v1', coupons);
 app.use('/api/v1', auth)
 app.use('/api/v1', payment)
 app.use('/api/v1', order)
+app.use('/api/coupon', couponRoute);
+app.use('/api/setting', settingRoutes);
+app.use('/api/v1', categories);
+app.use('/api/v1', reports)
 
 
 if (process.env.NODE_ENV === 'PRODUCTION') {
@@ -57,4 +63,4 @@ if (process.env.NODE_ENV === 'PRODUCTION') {
 // Middleware to handle errors
 app.use(errorMiddleware);
 
-module.exports = app;
+module.exports = app
