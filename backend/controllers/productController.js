@@ -1,5 +1,5 @@
 const Product = require('../models/product')
-
+const Category = require('../models/category')
 const ErrorHandler = require('../utils/errorHandler');
 const catchAsyncErrors = require('../middlewares/catchAsyncErrors');
 const APIFeatures = require('../utils/apiFeatures')
@@ -43,7 +43,7 @@ exports.newProduct = catchAsyncErrors(async (req, res, next) => {
 // Get all products => /api/v1/products?keyword=apple
 exports.getProducts = catchAsyncErrors(async (req, res, next) => {
 
-    const resPerPage = 4;
+    const resPerPage = 8;
     const productsCount = await Product.countDocuments();
 
     const apiFeatures = new APIFeatures(Product.find(), req.query)
@@ -180,7 +180,6 @@ exports.deleteProduct = catchAsyncErrors(async (req, res, next) => {
 
 // Create new review   =>   /api/v1/review
 exports.createProductReview = catchAsyncErrors(async (req, res, next) => {
-
     const { rating, comment, productId } = req.body;
 
     const review = {
@@ -203,20 +202,21 @@ exports.createProductReview = catchAsyncErrors(async (req, res, next) => {
                 review.rating = rating;
             }
         })
-
     } else {
+        if (!product.reviews) {
+            product.reviews = []; // Add this line to initialize the reviews array if it doesn't exist
+        }
         product.reviews.push(review);
-        product.numOfReviews = product.reviews.length
+        product.numOfReviews = product.reviews.length;
     }
 
-    product.ratings = product.reviews.reduce((acc, item) => item.rating + acc, 0) / product.reviews.length
+    product.ratings = product.reviews.reduce((acc, item) => item.rating + acc, 0) / product.reviews.length;
 
     await product.save({ validateBeforeSave: false });
 
     res.status(200).json({
         success: true
     })
-
 })
 
 

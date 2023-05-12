@@ -4,12 +4,13 @@ const categorySchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
-    trim: true,
-    maxLength: [50, 'Category name cannot exceed 50 characters']
+    trim: true
+
   },
   description: {
     type: String,
     required: true,
+    maxLength: [50, 'Category name cannot exceed 50 characters']
   },
   createdAt: {
     type: Date,

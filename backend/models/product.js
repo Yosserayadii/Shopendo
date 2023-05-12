@@ -33,13 +33,11 @@ const productSchema = new mongoose.Schema({
             },
         }
     ],
-    categories: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Category',
-            required: true
-        }
-    ],
+    category: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Category',
+        required: true
+      },
     seller: {
         type: String,
         required: [true, 'Please enter product seller']
