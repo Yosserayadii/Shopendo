@@ -5,6 +5,7 @@ const catchAsyncErrors = require('../middlewares/catchAsyncErrors');
 const APIFeatures = require('../utils/apiFeatures')
 const cloudinary = require('cloudinary')
 
+
 // Create new product   =>   /api/v1/admin/product/new
 exports.newProduct = catchAsyncErrors(async (req, res, next) => {
 
@@ -257,3 +258,16 @@ exports.deleteReview = catchAsyncErrors(async (req, res, next) => {
         success: true
     })
 })
+// Define the endpoint for product recommendation
+exports.getRecommendedProducts = async (req, res) => {
+    try {
+      const { image } = req.body;
+      // Make predictions using the AI model based on the provided image
+      const recommendedProducts = await AIModel.predict(image);
+      // Return the recommended products in the response
+      res.status(200).json({ products: recommendedProducts });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  };

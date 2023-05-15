@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router();
-
+const { getRecommendedProducts } = require('../controllers/productController');
 
 const {
     getProducts,
@@ -33,5 +33,8 @@ router.route('/admin/product/:id')
 router.route('/review').put(isAuthenticatedUser, createProductReview)
 router.route('/reviews').get(isAuthenticatedUser, getProductReviews)
 router.route('/reviews').delete(isAuthenticatedUser, deleteReview)
+
+// Route to get recommended products
+router.post('/product/:id/recommend', getRecommendedProducts);
 
 module.exports = router;
