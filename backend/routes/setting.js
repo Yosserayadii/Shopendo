@@ -17,7 +17,27 @@ router.get('/settings', async (req, res) => {
 router.post('/settings', async (req, res) => {
   try {
     const { headerColor, sidebarColor, announcementMessage, announcementColor, uniqueColor, logoImage } = req.body;
-    const setting = await Setting.findOneAndUpdate({}, { headerColor, sidebarColor, announcementMessage, announcementColor, uniqueColor, logoImage }, { new: true, upsert: true });
+    let setting = await Setting.findOne();
+
+    if (!setting) {
+      setting = new Setting({
+        headerColor,
+        sidebarColor,
+        announcementColor,
+        announcementMessage,
+        uniqueColor: 'default',
+        logoImage: 'default'
+      });
+    } else {
+      setting.headerColor = headerColor;
+      setting.sidebarColor = sidebarColor;
+      setting.announcementMessage = announcementMessage;
+      setting.announcementColor = announcementColor;
+      setting.uniqueColor = uniqueColor;
+      setting.logoImage = logoImage;
+    }
+
+    await setting.save();
     res.json(setting);
   } catch (err) {
     console.error(err.message);

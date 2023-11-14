@@ -1,5 +1,6 @@
 const Setting = require('../models/settings');
 
+
 // Get current settings
 const getCurrentSettings = async (req, res) => {
   try {
@@ -11,9 +12,9 @@ const getCurrentSettings = async (req, res) => {
   }
 };
 
-// Update settings
+
 const updateSettings = async (req, res) => {
-  const { headerColor, sidebarColor, announcementMessage, announcementColor, uniqueColor, logoImage  } = req.body;
+  const { headerColor, sidebarColor, announcementMessage, announcementColor, uniqueColor, logoImage } = req.body;
 
   try {
     let settings = await Setting.findOne();
@@ -23,7 +24,8 @@ const updateSettings = async (req, res) => {
         headerColor,
         sidebarColor,
         announcementColor,
-        announcementMessage, uniqueColor: 'default',
+        announcementMessage,
+        uniqueColor: 'default',
         logoImage: 'default'
       });
     } else {
@@ -32,7 +34,7 @@ const updateSettings = async (req, res) => {
       settings.announcementMessage = announcementMessage;
       settings.announcementColor = announcementColor;
       settings.uniqueColor = uniqueColor;
-      settings.logoImage = logoImage
+      settings.logoImage = logoImage;
     }
 
     await settings.save();
@@ -42,7 +44,6 @@ const updateSettings = async (req, res) => {
     res.status(500).send('Server Error');
   }
 };
-
 module.exports = {
   getCurrentSettings,
   updateSettings

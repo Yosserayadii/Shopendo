@@ -3,28 +3,30 @@ const mongoose = require('mongoose');
 const colorSchema = new mongoose.Schema({
   headerColor: {
     type: String,
-    required: true
+    required: true,
   },
   sidebarColor: {
     type: String,
-    required: true
+    required: true,
   },
   announcementMessage: {
     type: String,
-    required: true
+    required: true,
   },
   announcementColor: {
     type: String,
-    required: true
+    required: true,
   },
   uniqueColor: {
     type: String,
-    required: true
+    required: true,
   },
   logoImage: {
     type: String,
-    required: true
-  }
+    required: true,
+  },
+}, {
+  collection: 'settings' // Specify the collection name explicitly
 });
 
 const Setting = mongoose.model('Setting', colorSchema);
